@@ -2,11 +2,7 @@
 Official repository for HAI-coaching, the first high quality dataset for nutritional counselling, sourced through Human-AI (HAI) collaboration.
 
 # WARNING: READ CAREFULLY
-This dataset has not been published yet, so every use of it is subject to individual approval and must be kept confidential. Do not (under any circumstance):
-* Share the data with anyone
-* Share any information about the demographics (these are protected data)
-
-Additionally, if you plan using this dataset to prompt proprietary models (e.g. Google's Bard, OpenAI's ChatGPT etc.) always consult the owner (Simone Balloccu) before, to avoid data leaking. For now we know that:
+If you plan to use this dataset to prompt proprietary models (e.g. Google's Bard, OpenAI's ChatGPT etc.) always consult terms and conditions. Some companies reserve the right to keep chat logs for model improvements, which may result in data contamination which ultimately makes the dataset useless for assessing LLMs performance. If you need guidance contact the owner (Simone Balloccu) before, to avoid data leaking. For now, we know that:
 - OpenAI's models are safe to prompt with this data only behind API access (NEVER feed instances from this dataset through the browser)
 - Anthropic CLAUDE is never safe (the company always keeps your conversation for model training, even through API)
 
