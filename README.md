@@ -42,4 +42,7 @@ The various folder should be pretty self-explanatory and all contains their own 
 
 
 ## Working with the dataset
-The file ``dataset_parsing.ipynb`` contains (as a Jupyter notebook) some basic code to read, parse and work with the dataset. 
+The file ``dataset_parsing.ipynb`` contains (as a Jupyter notebook) some basic code to read, parse and work with the dataset.
+
+## Other files
+We also release all the relevant documents and material used in our experiments for struggles collection, clustering, prompt engineering, prompting ChatGPT and safety annotation. Each step has its own directory and README file.
