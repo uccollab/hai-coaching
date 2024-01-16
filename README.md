@@ -1,4 +1,4 @@
-# HAI-coaching
+# HAI-coaching - Ask the experts: sourcing high-quality datasets for nutritional counselling through Human-AI collaboration
 Official repository for HAI-coaching, the first high quality dataset for nutritional counselling, sourced through Human-AI (HAI) collaboration.
 
 # WARNING: READ CAREFULLY
