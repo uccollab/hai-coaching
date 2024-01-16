@@ -1,0 +1,6 @@
+Read the following statement from a person struggling with reaching a healthy lifestyle:
+
+"$STRUGGLE"
+
+1) Tell this person how to see it in a more positive way. Start with "$SLOT_1". Use only 2 short sentences.
+2) Tell the person what lesson can be learned from the struggle. Start with "$SLOT_2". Use only 2 short sentences.

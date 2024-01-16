@@ -1,0 +1,5 @@
+Read the following statement from a person struggling with reaching a healthy lifestyle:
+
+"$STRUGGLE"
+
+Complete the following 10 utterances by suggesting this person how they can face the struggle. Each utterance must be different. Make each utterance start as shown below.

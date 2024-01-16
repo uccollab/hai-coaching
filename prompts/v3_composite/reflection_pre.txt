@@ -1,0 +1,6 @@
+Read the following statement from a person struggling with reaching a healthy lifestlye:
+
+"$STRUGGLE"
+
+1) Try to understand what the person means. Start with $REFLECTION_SLOT. Use only 2 short sentences.
+2) Try to understand how the person feels. Start with "Does this make you feel". Use only 2 short sentences.

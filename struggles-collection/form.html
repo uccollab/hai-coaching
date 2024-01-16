@@ -1,0 +1,981 @@
+
+<!DOCTYPE html>
+<html>
+<!-- MultiStep Form -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+</head>
+<body>
+	<div class="row" id="main">
+		<div class="col-md-12 col-md-offset-3">
+			<form 
+			  id="msform"
+			  action="https://formspree.io/f/xnqyaqeg"
+			  method="POST"
+			>
+				<!-- progressbar -->
+				<ul id="progressbar">
+					<li class="active"><b>Info & consent</b></li>
+					<li><b>Write about your struggles</b></li>
+					<li><b>A quick question</b></li>
+					<li><b>Tell us a bit about you</b></li>
+					<li><b>Submit</b></li>
+				</ul>
+				<!-- fieldsets -->
+				<fieldset>
+					<div class="consent-page">
+					<h1>What we ask you to do?</h1><br>
+					<img src="./introduction_tutorial.png">
+					<!-- Default checkbox -->
+					<input type="checkbox" onclick="revealConsentForm(); check();" id="interested" name="interested" value="interested">
+					<label class="checkbox-label"  for="interested">I want to take part in the experiment.</label>
+					<div class="col-md-12" id="consent_form" style="display:none">
+						<h3 id="consent_form_b"><b>Consent form</b></h3>
+						<a id="consent_form_b">Project title:</a> Collection and Validation of Human-Sourced and machine-generated comforting text in dietary domain <br>
+						<a id="consent_form_b">Principal Investigator(s):</a> - <br>
+						<a id="consent_form_b">Supervisor(s):</a> - <br>
+						<hr/>
+						<p>Please read the statements below and tick the final box to confirm you have read and understood the statements and upon doing so agree to participate in the project.
+						<br><br>
+						➡️ I confirm that the research project “Collection and Validation of Human-Sourced and machine-generated comforting text in dietary domain” has been explained to me. I have had the opportunity to ask questions about the project and have had these answered satisfactorily.
+						<br><br>
+						➡️ I consent to the material I contribute being used to generate insights for the research project “Collection and Validation of Human-Sourced and machine-generated comforting text in dietary domain”. 
+						<br><br>
+						➡️ I understand that my participation in this research is voluntary and that I may withdraw from the research at any time (until the point of data analysis) without providing a reason. 
+						<br><br>
+						➡️ I consent to allow the fully anonymised data to be used for future publications and other scholarly means of disseminating the findings from the research project. 
+						<br><br>
+						➡️ I consent to allow my data (including audio or visual recordings) to be shared with a third-party supplier, noting that any personal data shared will be done so securely.
+						<br><br>
+						➡️ I understand that the information/data acquired will be securely stored by researchers, but that appropriately anonymised data may in future be made available to others for research purposes. I understand that the University may publish appropriately anonymised data in appropriate data repositories for verification purposes and to make it accessible to researchers and other research users.
+						<br>
+						<hr/>
+						<h4><b>IMPORTANT: REGARDING FRAUDULENT HITS</b></h4>
+						This HIT is being monitored (both manually and automatically) to avoid submitting fraudulent work. More specifically, HITs will be flagged as fraudulent in accordance to the following guidelines: <a target="_blank" id="consent_form_b" href="https://place.holder"><b>SEE GUIDELINES</b></a><br>
+						In case you believe your HIT has been wrongly flagged as fraudulent, please <a id="consent_form_b" href="mailto:email@placeholder.temp">contact us as soon as possible</a><br>
+						➡️ I understand that this HIT is monitored and that I might lose the right to be remunerated if my HIT gets detected as fraudulent.
+						<br>
+					</div>
+				</div>
+				<br>
+				<div class="col-md-12" id="confirm_button" style="display:none" needs-validation>
+					<input type="checkbox" id="confirm" name="confirm" value="confirm" onclick="check()">
+					<label class="checkbox-label"  for="confirm">I confirm that I have read and understood the above statements.</label>
+				</div>
+
+					<input type="button" id="next" name="next" class="next action-button" value="Next" onclick="saveTime('consent'); validateConsentForm()" />
+				</fieldset>
+				<fieldset>
+					<h1 class="struggle1">Write about your struggles</h1>
+					<div class="col-md-12" id="help">
+						<img src="./example.png" id="help" alt="example">
+					</div>
+					<br><p><textarea placeholder="Struggle N°1" name="struggle_1" id="struggle_1" style="height:10%;width:50%;min-height:10%;min-width:50%;resize:none;border:solid 2px black; color: black; font-size: 16"></textarea></p>
+					<br><p><textarea placeholder="Struggle N°2" name="struggle_2" id="struggle_2" style="height:10%;width:50%;min-height:10%;min-width:50%;resize:none;border:solid 2px black; color: black; font-size: 16"></textarea></p>
+					<br><p><textarea placeholder="Struggle N°3" name="struggle_3" id="struggle_3" style="height:10%;width:50%;min-height:10%;min-width:50%;border:solid 2px black; color: black; font-size: 16"></textarea></p>
+
+					<input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick="saveTime('struggles');"/>
+					<input type="button" name="next" class="next action-button" value="Next" onclick="saveTime('struggles'); checkTextAreas(); generateAttentionOperation()"/>
+				</fieldset>
+				<fieldset>
+					<h1>A quick question</h1>
+
+					<br><div class="row-md-12"><h2 class="struggle1"><p><p id="attention_label">QUESTION </p><textarea placeholder="" name="attention_question" id="attention_question" style="height:7.6%;width:3%;resize:none;border:solid 2px black; color: black; font-size: 16"></textarea></p></h2></div>
+
+					<input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick="saveTime('struggles');"/>
+					<input type="button" name="next" class="next action-button" value="Next" onclick="saveTime('struggles'); generateAttentionOperation();"/>
+				</fieldset>
+				<fieldset>
+					<h1>Tell us a bit about you</h1>
+					<h2 class="fs-subtitle"><p><b>You're almost there. Please let us know a bit more about you. This helps us boosting inclusion and diversity in our sample.</b></p></h2><br>
+					<div class="w-70" id="demographics">
+					
+						<b>Prolific ID:</b><br>
+						<p><textarea name="prolific_id" id="prolific_id" style="height:2%;"></textarea></p>
+
+						
+						<b>Gender:</b><br>
+						<select name="gender" id="gender">
+						  <option><b>Select...</b></option>
+						  <option>Male</option>
+						  <option>Female</option>
+						  <option>Other</option>
+						  <option>Prefer not to say</option>
+						</select><br><br>
+						
+						<b>Age group:</b><br>
+						<select name="age" id="age">
+						  <option><b>Select...</b></option>
+						  <option>18-24</option>
+						  <option>25-34</option>
+						  <option>35-44</option>
+						  <option>45-54</option>
+						  <option>55-64</option>
+						  <option>65 and over</option>
+						  <option>Prefer not to say</option>
+						</select><br><br>
+						
+						<b>Education level:</b><br>
+						<select name="education" id="education">
+						  <option><b>Select...</b></option>
+						  <option>No education level</option>
+						  <option>Primary education</option>
+						  <option>Secondary education</option>
+						  <option>Bachelor Degree</option>
+						  <option>Master Degree</option>
+						  <option>PhD or higher</option>
+						  <option>Prefer not to say</option>
+						</select><br><br>
+						
+						<b>Occupation:</b><br>
+						<select name="occupation" id="occupation">
+						  <option><b>Select...</b></option>
+						  <option>Student</option>
+						  <option>Worker</option>
+						  <option>Student and worker</option>
+						  <option>Prefer not to say</option>
+						</select><br><br>
+						
+						<b>Country of origin:</b><br>
+						<select id="country" name="country">
+							<option><b>Select...</b></option>
+							<option value="Afghanistan">Afghanistan</option>
+							<option value="Aland Islands">Åland Islands</option>
+							<option value="Albania">Albania</option>
+							<option value="Algeria">Algeria</option>
+							<option value="American Samoa">American Samoa</option>
+							<option value="Andorra">Andorra</option>
+							<option value="Angola">Angola</option>
+							<option value="Anguilla">Anguilla</option>
+							<option value="Antarctica">Antarctica</option>
+							<option value="Antigua and Barbuda">Antigua & Barbuda</option>
+							<option value="Argentina">Argentina</option>
+							<option value="Armenia">Armenia</option>
+							<option value="Aruba">Aruba</option>
+							<option value="Australia">Australia</option>
+							<option value="Austria">Austria</option>
+							<option value="Azerbaijan">Azerbaijan</option>
+							<option value="Bahamas">Bahamas</option>
+							<option value="Bahrain">Bahrain</option>
+							<option value="Bangladesh">Bangladesh</option>
+							<option value="Barbados">Barbados</option>
+							<option value="Belarus">Belarus</option>
+							<option value="Belgium">Belgium</option>
+							<option value="Belize">Belize</option>
+							<option value="Benin">Benin</option>
+							<option value="Bermuda">Bermuda</option>
+							<option value="Bhutan">Bhutan</option>
+							<option value="Bolivia">Bolivia</option>
+							<option value="Bonaire, Sint Eustatius and Saba">Caribbean Netherlands</option>
+							<option value="Bosnia and Herzegovina">Bosnia & Herzegovina</option>
+							<option value="Botswana">Botswana</option>
+							<option value="Bouvet Island">Bouvet Island</option>
+							<option value="Brazil">Brazil</option>
+							<option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+							<option value="Brunei Darussalam">Brunei</option>
+							<option value="Bulgaria">Bulgaria</option>
+							<option value="Burkina Faso">Burkina Faso</option>
+							<option value="Burundi">Burundi</option>
+							<option value="Cambodia">Cambodia</option>
+							<option value="Cameroon">Cameroon</option>
+							<option value="Canada">Canada</option>
+							<option value="Cape Verde">Cape Verde</option>
+							<option value="Cayman Islands">Cayman Islands</option>
+							<option value="Central African Republic">Central African Republic</option>
+							<option value="Chad">Chad</option>
+							<option value="Chile">Chile</option>
+							<option value="China">China</option>
+							<option value="Christmas Island">Christmas Island</option>
+							<option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+							<option value="Colombia">Colombia</option>
+							<option value="Comoros">Comoros</option>
+							<option value="Congo">Congo - Brazzaville</option>
+							<option value="Congo, Democratic Republic of the Congo">Congo - Kinshasa</option>
+							<option value="Cook Islands">Cook Islands</option>
+							<option value="Costa Rica">Costa Rica</option>
+							<option value="Cote D'Ivoire">Côte d’Ivoire</option>
+							<option value="Croatia">Croatia</option>
+							<option value="Cuba">Cuba</option>
+							<option value="Curacao">Curaçao</option>
+							<option value="Cyprus">Cyprus</option>
+							<option value="Czech Republic">Czechia</option>
+							<option value="Denmark">Denmark</option>
+							<option value="Djibouti">Djibouti</option>
+							<option value="Dominica">Dominica</option>
+							<option value="Dominican Republic">Dominican Republic</option>
+							<option value="Ecuador">Ecuador</option>
+							<option value="Egypt">Egypt</option>
+							<option value="El Salvador">El Salvador</option>
+							<option value="Equatorial Guinea">Equatorial Guinea</option>
+							<option value="Eritrea">Eritrea</option>
+							<option value="Estonia">Estonia</option>
+							<option value="Ethiopia">Ethiopia</option>
+							<option value="Falkland Islands (Malvinas)">Falkland Islands (Islas Malvinas)</option>
+							<option value="Faroe Islands">Faroe Islands</option>
+							<option value="Fiji">Fiji</option>
+							<option value="Finland">Finland</option>
+							<option value="France">France</option>
+							<option value="French Guiana">French Guiana</option>
+							<option value="French Polynesia">French Polynesia</option>
+							<option value="French Southern Territories">French Southern Territories</option>
+							<option value="Gabon">Gabon</option>
+							<option value="Gambia">Gambia</option>
+							<option value="Georgia">Georgia</option>
+							<option value="Germany">Germany</option>
+							<option value="Ghana">Ghana</option>
+							<option value="Gibraltar">Gibraltar</option>
+							<option value="Greece">Greece</option>
+							<option value="Greenland">Greenland</option>
+							<option value="Grenada">Grenada</option>
+							<option value="Guadeloupe">Guadeloupe</option>
+							<option value="Guam">Guam</option>
+							<option value="Guatemala">Guatemala</option>
+							<option value="Guernsey">Guernsey</option>
+							<option value="Guinea">Guinea</option>
+							<option value="Guinea-Bissau">Guinea-Bissau</option>
+							<option value="Guyana">Guyana</option>
+							<option value="Haiti">Haiti</option>
+							<option value="Heard Island and Mcdonald Islands">Heard & McDonald Islands</option>
+							<option value="Holy See (Vatican City State)">Vatican City</option>
+							<option value="Honduras">Honduras</option>
+							<option value="Hong Kong">Hong Kong</option>
+							<option value="Hungary">Hungary</option>
+							<option value="Iceland">Iceland</option>
+							<option value="India">India</option>
+							<option value="Indonesia">Indonesia</option>
+							<option value="Iran, Islamic Republic of">Iran</option>
+							<option value="Iraq">Iraq</option>
+							<option value="Ireland">Ireland</option>
+							<option value="Isle of Man">Isle of Man</option>
+							<option value="Israel">Israel</option>
+							<option value="Italy">Italy</option>
+							<option value="Jamaica">Jamaica</option>
+							<option value="Japan">Japan</option>
+							<option value="Jersey">Jersey</option>
+							<option value="Jordan">Jordan</option>
+							<option value="Kazakhstan">Kazakhstan</option>
+							<option value="Kenya">Kenya</option>
+							<option value="Kiribati">Kiribati</option>
+							<option value="Korea, Democratic People's Republic of">North Korea</option>
+							<option value="Korea, Republic of">South Korea</option>
+							<option value="Kosovo">Kosovo</option>
+							<option value="Kuwait">Kuwait</option>
+							<option value="Kyrgyzstan">Kyrgyzstan</option>
+							<option value="Lao People's Democratic Republic">Laos</option>
+							<option value="Latvia">Latvia</option>
+							<option value="Lebanon">Lebanon</option>
+							<option value="Lesotho">Lesotho</option>
+							<option value="Liberia">Liberia</option>
+							<option value="Libyan Arab Jamahiriya">Libya</option>
+							<option value="Liechtenstein">Liechtenstein</option>
+							<option value="Lithuania">Lithuania</option>
+							<option value="Luxembourg">Luxembourg</option>
+							<option value="Macao">Macao</option>
+							<option value="Macedonia, the Former Yugoslav Republic of">North Macedonia</option>
+							<option value="Madagascar">Madagascar</option>
+							<option value="Malawi">Malawi</option>
+							<option value="Malaysia">Malaysia</option>
+							<option value="Maldives">Maldives</option>
+							<option value="Mali">Mali</option>
+							<option value="Malta">Malta</option>
+							<option value="Marshall Islands">Marshall Islands</option>
+							<option value="Martinique">Martinique</option>
+							<option value="Mauritania">Mauritania</option>
+							<option value="Mauritius">Mauritius</option>
+							<option value="Mayotte">Mayotte</option>
+							<option value="Mexico">Mexico</option>
+							<option value="Micronesia, Federated States of">Micronesia</option>
+							<option value="Moldova, Republic of">Moldova</option>
+							<option value="Monaco">Monaco</option>
+							<option value="Mongolia">Mongolia</option>
+							<option value="Montenegro">Montenegro</option>
+							<option value="Montserrat">Montserrat</option>
+							<option value="Morocco">Morocco</option>
+							<option value="Mozambique">Mozambique</option>
+							<option value="Myanmar">Myanmar (Burma)</option>
+							<option value="Namibia">Namibia</option>
+							<option value="Nauru">Nauru</option>
+							<option value="Nepal">Nepal</option>
+							<option value="Netherlands">Netherlands</option>
+							<option value="Netherlands Antilles">Curaçao</option>
+							<option value="New Caledonia">New Caledonia</option>
+							<option value="New Zealand">New Zealand</option>
+							<option value="Nicaragua">Nicaragua</option>
+							<option value="Niger">Niger</option>
+							<option value="Nigeria">Nigeria</option>
+							<option value="Niue">Niue</option>
+							<option value="Norfolk Island">Norfolk Island</option>
+							<option value="Northern Mariana Islands">Northern Mariana Islands</option>
+							<option value="Norway">Norway</option>
+							<option value="Oman">Oman</option>
+							<option value="Pakistan">Pakistan</option>
+							<option value="Palau">Palau</option>
+							<option value="Palestinian Territory, Occupied">Palestine</option>
+							<option value="Panama">Panama</option>
+							<option value="Papua New Guinea">Papua New Guinea</option>
+							<option value="Paraguay">Paraguay</option>
+							<option value="Peru">Peru</option>
+							<option value="Philippines">Philippines</option>
+							<option value="Pitcairn">Pitcairn Islands</option>
+							<option value="Poland">Poland</option>
+							<option value="Portugal">Portugal</option>
+							<option value="Puerto Rico">Puerto Rico</option>
+							<option value="Qatar">Qatar</option>
+							<option value="Reunion">Réunion</option>
+							<option value="Romania">Romania</option>
+							<option value="Russia">Russia</option>
+							<option value="Rwanda">Rwanda</option>
+							<option value="Saint Barthelemy">St. Barthélemy</option>
+							<option value="Saint Helena">St. Helena</option>
+							<option value="Saint Kitts and Nevis">St. Kitts & Nevis</option>
+							<option value="Saint Lucia">St. Lucia</option>
+							<option value="Saint Martin">St. Martin</option>
+							<option value="Saint Pierre and Miquelon">St. Pierre & Miquelon</option>
+							<option value="Saint Vincent and the Grenadines">St. Vincent & Grenadines</option>
+							<option value="Samoa">Samoa</option>
+							<option value="San Marino">San Marino</option>
+							<option value="Sao Tome and Principe">São Tomé & Príncipe</option>
+							<option value="Saudi Arabia">Saudi Arabia</option>
+							<option value="Senegal">Senegal</option>
+							<option value="Serbia">Serbia</option>
+							<option value="Serbia and Montenegro">Serbia</option>
+							<option value="Seychelles">Seychelles</option>
+							<option value="Sierra Leone">Sierra Leone</option>
+							<option value="Singapore">Singapore</option>
+							<option value="Sint Maarten">Sint Maarten</option>
+							<option value="Slovakia">Slovakia</option>
+							<option value="Slovenia">Slovenia</option>
+							<option value="Solomon Islands">Solomon Islands</option>
+							<option value="Somalia">Somalia</option>
+							<option value="South Africa">South Africa</option>
+							<option value="South Georgia and the South Sandwich Islands">South Georgia & South Sandwich Islands</option>
+							<option value="South Sudan">South Sudan</option>
+							<option value="Spain">Spain</option>
+							<option value="Sri Lanka">Sri Lanka</option>
+							<option value="Sudan">Sudan</option>
+							<option value="Suriname">Suriname</option>
+							<option value="Svalbard and Jan Mayen">Svalbard & Jan Mayen</option>
+							<option value="Eswatini">Eswatini</option>
+							<option value="Sweden">Sweden</option>
+							<option value="Switzerland">Switzerland</option>
+							<option value="Syrian Arab Republic">Syria</option>
+							<option value="Taiwan, Province of China">Taiwan</option>
+							<option value="Tajikistan">Tajikistan</option>
+							<option value="Tanzania, United Republic of">Tanzania</option>
+							<option value="Thailand">Thailand</option>
+							<option value="Timor-Leste">Timor-Leste</option>
+							<option value="Togo">Togo</option>
+							<option value="Tokelau">Tokelau</option>
+							<option value="Tonga">Tonga</option>
+							<option value="Trinidad and Tobago">Trinidad & Tobago</option>
+							<option value="Tunisia">Tunisia</option>
+							<option value="Turkey">Turkey</option>
+							<option value="Turkmenistan">Turkmenistan</option>
+							<option value="Turks and Caicos Islands">Turks & Caicos Islands</option>
+							<option value="Tuvalu">Tuvalu</option>
+							<option value="Uganda">Uganda</option>
+							<option value="Ukraine">Ukraine</option>
+							<option value="United Arab Emirates">United Arab Emirates</option>
+							<option value="United Kingdom">United Kingdom</option>
+							<option value="United States">United States</option>
+							<option value="United States Minor Outlying Islands">U.S. Outlying Islands</option>
+							<option value="Uruguay">Uruguay</option>
+							<option value="Uzbekistan">Uzbekistan</option>
+							<option value="Vanuatu">Vanuatu</option>
+							<option value="Venezuela">Venezuela</option>
+							<option value="Vietnam">Vietnam</option>
+							<option value="Virgin Islands, British">British Virgin Islands</option>
+							<option value="Virgin Islands, U.s.">U.S. Virgin Islands</option>
+							<option value="Wallis and Futuna">Wallis & Futuna</option>
+							<option value="Western Sahara">Western Sahara</option>
+							<option value="Yemen">Yemen</option>
+							<option value="Zambia">Zambia</option>
+							<option value="Zimbabwe">Zimbabwe</option>
+							<option value="UNK">Prefer not to say</option>
+						</select><br><br>
+						
+						<b>Ethnic group:</b><br>
+						<select name="ethnic" id="ethnic">
+						  <optgroup label="Asian or Asian British">
+						  <option><b>Select...</b></option>
+						  <option>Indian</option>
+						  <option>Pakistani</option>
+						  <option>Bangladeshi</option>
+						  <option>Chinese</option>
+						  <option>Any other Asian background</option>
+						  
+						  <optgroup label="Black, Black British, Caribbean or African">
+						  <option><b>Select...</b></option>
+						  <option>Caribbean</option>
+						  <option>African</option>
+						  <option>Any other Black, Black British, Caribbean or African background</option>
+						  
+						  <optgroup label="Mixed or multiple ethnics group">
+						  <option><b>Select...</b></option>
+						  <option>White and Black Caribbean</option>
+						  <option>White and Black African</option>
+						  <option>White and Asian</option>
+						  <option>Any other Mixed or multiple ethnic background</option>
+						  
+						  <optgroup label="White">
+						  <option><b>Select...</b></option>
+						  <option>English, Welsh, Scottish, Northern Irish or British</option>
+						  <option>Irish</option>
+						  <option>Gipsy or Irish Traveller</option>
+						  <option>Roma</option>
+						  <option>Any other White background</option>
+						  
+						  <optgroup label="Other ethnic group">
+						  <option><b>Select...</b></option>
+						  <option>Arab</option>
+						  <option>Any other ethnic group</option>
+						</select><br><br>
+						
+						<b>Religion:</b><br>
+						<select name="religion" id="religion">
+						  <option><b>Select...</b></option>
+						  <option>No Religion</option>
+						  <option>Christian</option>
+						  <option>Buddhist</option>
+						  <option>Hindu</option>
+						  <option>Muslim</option>
+						  <option>Jewish</option>
+						  <option>Sikh</option>
+						  <option>Other</option>
+						</select><br><br>
+					</div><br>
+					<input type="button" name="previous" class="previous action-button-previous" value="Previous" onclick="saveTime('demographics');"/>
+					<input type="button" name="next" class="next action-button" value="Next" onclick="saveTime('demographics'); checkDemographics();"/>
+				</fieldset>
+				<fieldset>
+					<h2 class="confirm">Confirm and submit</h2>
+					<h3 class="fs-subtitle"><b>Thank you! Now you can go back and double-check what you wrote, or you can just submit.</b></h3>
+					<h2><b>IMPORTANT:</b> before submitting, save the following completion code. Then submit the form, go back to Prolific and put the completion code before submitting there.</h1>
+					<br>
+					<h3>COMPLETION CODE: <a id="completion_code_temp">AAAAAAAAA</a></h3>
+				</fieldset>
+				<div class="col-md-12" id="timings" style="display:none">
+					<textarea name="time_consent" id="time_consent"></textarea></p>
+					<textarea name="time_struggles" id="time_struggles"></textarea></p>
+					<textarea name="time_submit" id="time_submit"></textarea></p>
+					<textarea name="n1" id="n1"></textarea></p>
+					<textarea name="n2" id="n2"></textarea></p>
+					<textarea name="operator" id="operator"></textarea></p>
+					<textarea name="result" id="result"></textarea></p>
+					<textarea name="completion_code" id="completion_code"></textarea></p>
+					<textarea name="completion_date" id="completion_date"></textarea></p>
+
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+
+<style>
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+
+
+img {
+    width: 100%;
+}
+
+html {
+    height: 100%;
+    background: #6441A5; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #6441A5, #2a0845); /* Chrome 10-25, Safari 5.1-6 */
+}
+
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background: transparent;
+}
+
+/*form styles*/
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+}
+
+#msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+
+.main {
+	overflow: scroll;
+}
+
+/*inputs*/
+#msform #struggle_1, #struggle_2, #struggle_3 {
+    /*padding: 15px;*/
+    border: 2px solid black;
+    /*border-radius: 0px;
+    margin-bottom: 10px;*/
+    width: 45%;
+	height: 7%;
+    /*box-sizing: border-box;*/
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: black;
+	font-weight: lighter;
+    font-size: 16px;
+	resize: none;
+}
+
+input[type=checkbox] {
+}
+
+#submission textarea {
+	width: 30%;
+	height: 8%;
+    border: 2px solid black;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+	font-weight: lighter;
+    color: black;
+    font-size: 16px;
+	resize: none;
+	overflow: auto; 
+}
+
+
+/*buttons*/
+#msform .action-button {
+    width: 100px;
+    background: #ee0979;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#submitButton {
+	display: none;
+}
+
+
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
+}
+
+
+#msform .action-button-previous {
+    width: 100px;
+    background: #C5C5F1;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button-previous:hover, #msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
+}
+
+/*headings*/
+.fs-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: black;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.struggle1, .struggle2, .struggle3, .confirm {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: black;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    /*counter-reset: step;*/
+}
+
+select { text-align-last: right; }
+
+#progressbar li {
+    list-style-type: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 19.8%;
+    float: left;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+#consent_form {
+  height:20%;
+  display: flex;
+  text-align: left;
+  justify-content: center;
+  border:3px solid black;
+  overflow-y:auto;
+}
+
+#progressbar li:before {
+    content: "";
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    background: white;
+    border-radius: 25px;
+    margin: 0 auto 10px auto;
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1; /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before, #progressbar li.active:after {
+    background: #ee0979;
+    color: white;
+}
+
+
+/* Not relevant to this form */
+.dme_link {
+    margin-top: 30px;
+    text-align: center;
+}
+.dme_link a {
+    background: #FFF;
+    /*font-weight: bold;*/
+    color: #ee0979;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 5px 25px;
+    font-size: 12px;
+}
+
+.dme_link a:hover, .dme_link a:focus {
+    background: #C5C5F1;
+    text-decoration: none;
+}
+
+#consent_form {
+	font-weight: lighter
+}
+
+#demographics {
+	padding-left: 10%;
+	padding-right: 10%;
+	display: inline-block;
+	text-align: left;
+	border: 2px solid black;
+}
+
+#age, #country, #ethnic, #education, #gender, #occupation, #religion, #prolific_id{
+	width: 200px;
+	text-align = left;
+	direction = ltr;
+}
+
+
+#option{
+  width: 120%;
+}
+
+#consent_form_b {
+	font-weight: bold
+}
+
+</style>
+
+<script>
+//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var consent_form_validated = false; //for required input
+var start = 0;
+var end = 0;
+var empty_struggle = false;
+var times = {};
+var numbers = [];
+var operators = ["+","-"];
+var result = null;
+var attention_done = false;
+
+
+var consent_form_checkboxes = {
+  "interested": false,
+  "confirm": false
+};
+$(document).ready(function() {
+	start = performance.now();
+});
+
+function storeVariables() {
+	document.getElementById('time_consent').value = times['consent'];
+	document.getElementById('time_struggles').value = times['struggles'];
+	document.getElementById('time_submit').value = times['submit'];
+	document.getElementById('n1').value = n1;
+	document.getElementById('n2').value = n2;
+	document.getElementById('operator').value = operator;
+	document.getElementById('result').value = result;
+
+
+}
+
+function saveTime(div_name) {
+	end = performance.now();
+	end = end - start;
+	end = end / 1000;
+	end = Math.round(end);
+	start = performance.now();
+	if([div_name] in times){
+		times[div_name] += end;
+		//console.log("new longest time for "+div_name+" -> added "+end+"s");
+	}
+	else{
+		if(!(div_name in times)){
+			times[div_name] = end;
+			//console.log("never recorded this time"+div_name+" -> added "+end+"s");			
+		}
+		//else
+			//console.log("time already present, skipping for "+div_name);
+		
+	}
+	console.log("---------------");
+	console.log(times);
+	console.log("---------------");
+}
+
+function checkTextAreas() {
+	if(document.getElementById('struggle_1').value == '' || document.getElementById('struggle_2').value == '' || document.getElementById('struggle_3').value == ''){
+		alert("None of your struggles can be empty!");
+		empty_struggle = true;
+	}
+	else
+		empty_struggle = false;
+}
+
+function checkAttention() {
+	if(document.getElementById('attention_question').value == ''){
+		alert("None of your struggles can be empty!");
+		empty_struggle = true;
+	}
+	else
+		empty_struggle = false;
+}
+
+function checkDemographics() {
+	if(document.getElementById('prolific_id').value == '' || document.getElementById('age').value == 'Select...' || document.getElementById('country').value == 'Select...' || document.getElementById('ethnic').value == 'Select...' || document.getElementById('education').value == 'Select...' || document.getElementById('gender').value == 'Select...' || document.getElementById('occupation').value == 'Select...' || document.getElementById('religion').value == 'Select...'){
+		alert("Please provide an answer for each question");
+		empty_struggle = true;
+	}
+	else
+		empty_struggle = false;
+}
+
+function generateAttentionOperation() {
+	if(!attention_done){
+		numbers.push(Math.floor(Math.random() * 5) + 1);
+		console.log(numbers)
+		numbers.push(Math.floor(Math.random() * 5) + 1);
+		operator = operators[Math.floor(Math.random() * 2)];
+		n1 = Math.max.apply(Math, numbers)
+		n2 = Math.min.apply(Math, numbers);
+		if(operator == "+")
+			result = n1+n2;
+		else
+			result = n1-n2;
+		console.log(numbers);
+		console.log(operator);
+		console.log(n1);
+		console.log(n2);
+		console.log(result);
+		document.getElementById('attention_label').innerHTML = "<b>"+n1+" "+operator+" "+n2+" = </b>";
+		attention_done = true;
+	}
+}
+
+$(document).ready(function() {
+	$(".next").click(function(){
+		if(empty_struggle)
+			return false;
+		if(!consent_form_validated)
+		{
+			if(!consent_form_checkboxes['interested'])
+			{
+				alert("Please mark the checkbox if you want to proceed.");
+				return false;
+			}
+			else if(!consent_form_checkboxes['confirm'])
+			{
+				alert("Please mark the second checkbox to confirm you want to proceed.");
+				return false;
+			}
+
+		}
+		
+		current_fs = $(this).parent();
+		next_fs = $(this).parent().next();
+		
+		//activate next step on progressbar using the index of next_fs
+		$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+		
+		//show the next fieldset
+		current_fs.hide();
+		
+		next_fs.css({'opacity': 1});
+		next_fs.show();
+		window.scrollTo(0, 0);
+		
+
+	});
+
+	$(".previous").click(function(){
+		end = performance.now();
+		end = end - start;
+		end = end / 1000;
+		end = Math.round(end);
+		start = performance.now();
+		
+		current_fs = $(this).parent();
+		previous_fs = $(this).parent().prev();
+		
+		//de-activate current step on progressbar
+		$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+		
+		//show the previous fieldset
+		current_fs.hide();
+		previous_fs.css({'opacity': 1});
+		previous_fs.show();
+		window.scrollTo(0, 0);
+		//hide the current fieldset with style
+		current_fs.animate({opacity: 0}, {
+			easing: 'easeInOutBack'
+		});
+	});
+});
+
+$(document).ready(function() {
+	code = 'C1FB74W3'//Math.random().toString(36).toUpperCase().slice(2);
+	document.getElementById("completion_code_temp").innerHTML = code;
+	document.getElementById("completion_code").innerHTML = code;
+	var today = new Date();
+	var dd = String(today.getDate()).padStart(2, '0');
+	var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+	var yyyy = today.getFullYear();
+
+	today = dd + '/' + mm + '/' + yyyy;
+	document.getElementById("completion_date").innerHTML = today;
+
+	validated = false;
+});
+
+
+function revealConsentForm() {
+  // Get the checkbox
+  var interested_checkbox = document.getElementById("interested");
+  // Get the output text
+  var text = document.getElementById("consent_form");
+  var confirm_checkbox = document.getElementById("confirm_button");
+
+  // If the checkbox is checked, display the output text
+  if (interested_checkbox.checked == true){
+    text.style.display = "block";
+	confirm_checkbox.style.display = "block";
+  } else {
+    text.style.display = "none";
+	confirm_checkbox.style.display = "none";
+  }
+}
+
+function check() {
+  if ((document.getElementById('interested').checked))
+	consent_form_checkboxes['interested'] = true;
+  else
+  {
+	consent_form_checkboxes['interested'] = false;}
+
+  if ((document.getElementById('confirm').checked))
+	consent_form_checkboxes['confirm'] = true;
+  else
+	consent_form_checkboxes['confirm'] = false;
+}
+
+function validateConsentForm() {
+ if (consent_form_checkboxes['interested'] && consent_form_checkboxes['confirm'])
+ {
+	consent_form_validated = true;
+ }
+ else
+	consent_form_validated = false;
+}
+</script>

@@ -1,0 +1,37 @@
+Read the following message of a person, struggling with reaching a healthy lifestyle:
+"$STRUGGLE"
+
+Write 3 paraphrased versions of this sentence, not longer than 2 short sentences. Keep the sentence in the same person as it is originally proposed. Present them in the following format:
+paraphrase1 ### paraphrase 2 ### ...
+
+Write just this, don't add any other text
+
+--------------------------------------
+
+Read the following message of a person, struggling with reaching a healthy lifestyle:
+"$STRUGGLE"
+
+Write 10 reflective listening statements, starting with "do you mean that". Each statement must convey understanding of what the person said. Present them in the following format:
+sentence 1### sentence 2 ### ...
+
+Write just this, don't add any other text
+
+--------------------------------------
+
+Read the following message of a person, struggling with reaching a healthy lifestyle:
+"$STRUGGLE"
+
+Write 10 positive reframing statements, starting with "try thinking that". Each statement must show an upside to the situation, a lesson to be learned, or a positive side of what the person said. Try changing the upside/lesson/positive side with each statement. Present them in the following format:
+sentence 1### sentence 2 ### ...
+
+Write just this, don't add any other text
+
+--------------------------------------
+
+Read the following message of a person, struggling with reaching a healthy lifestyle:
+"When I have a stressful work day, I always want to go out to eat to relax or go out for ice cream."
+
+Write 10 suggestions, starting with "you could". Each statement must suggest something the person could start doing to counter the struggle. Try changing the suggestion with each statement. Present them in the following format:
+sentence 1### sentence 2 ### ...
+
+Write just this, don't add any other text

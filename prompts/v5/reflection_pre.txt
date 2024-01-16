@@ -1,0 +1,6 @@
+Read the following statement from a person struggling with reaching a healthy lifestyle:
+
+"$STRUGGLE"
+
+1) Try to understand what the person means. Start with "$SLOT_1". Use only 2 short sentences.
+2) Ask the person how they're feeling, without assuming anything or proposing any feeling in particular. Start with "$SLOT_2". Use a single sentence.

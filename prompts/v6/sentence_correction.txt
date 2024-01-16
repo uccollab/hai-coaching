@@ -1,0 +1,5 @@
+Read the following sentence
+
+"$SENT"
+
+Rewrite it so that it starts with "$SLOT". Just the output.

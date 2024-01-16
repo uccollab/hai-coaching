@@ -1,0 +1,4 @@
+Another one. Just the output.
+
+1) Explain to the person how it is normal to experience it and how the they should not feel bad about it. Use only 2 short sentences.
+2) Provide a suggestion on how to face the struggle. Start with $INTENT_SLOT. Use only 2 short sentences.
