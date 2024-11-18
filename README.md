@@ -1,3 +1,35 @@
+# Leak, Cheat, Repeat: Data Contamination and Evaluation Malpractices in Closed-Source LLMs
+Large Language Models (LLMs) are being employed by end-users for various tasks, including sensitive ones such as health counseling, disregarding potential safety concerns. It is thus necessary to understand how adequately LLMs perform in such domains. We conduct a case study on ChatGPT in nutrition counseling, a popular use-case where the model supports a user with their dietary struggles. We crowd-source real-world diet-related struggles, then work with nutrition experts to generate supportive text using ChatGPT. Finally, experts evaluate the safety and text quality of ChatGPT’s output. The result is the HAI-coaching dataset, containing ~2.4K crowdsourced dietary struggles and ~97K corresponding ChatGPT-generated and expert-annotated supportive texts. We analyse ChatGPT’s performance, discovering potentially harmful behaviours, especially for sensitive topics like mental health. Finally, we use HAI-coaching to test open LLMs on various downstream tasks, showing that even the latest models struggle to achieve good performance.
+
+## Citing us
+You can find the published paper on the [ACL Anthology](https://aclanthology.org/2024.findings-emnlp.674/).
+
+If you use HAI-Coaching, please cite it as:
+```
+@inproceedings{balloccu-etal-2024-ask,
+    title = "Ask the experts: sourcing a high-quality nutrition counseling dataset through Human-{AI} collaboration",
+    author = "Balloccu, Simone  and
+      Reiter, Ehud  and
+      Li, Karen Jia-Hui  and
+      Sargsyan, Rafael  and
+      Kumar, Vivek  and
+      Reforgiato, Diego  and
+      Riboni, Daniele  and
+      Dusek, Ondrej",
+    editor = "Al-Onaizan, Yaser  and
+      Bansal, Mohit  and
+      Chen, Yun-Nung",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2024",
+    month = nov,
+    year = "2024",
+    address = "Miami, Florida, USA",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.findings-emnlp.674",
+    pages = "11519--11545",
+    abstract = "Large Language Models (LLMs) are being employed by end-users for various tasks, including sensitive ones such as health counseling, disregarding potential safety concerns. It is thus necessary to understand how adequately LLMs perform in such domains. We conduct a case study on ChatGPT in nutrition counseling, a popular use-case where the model supports a user with their dietary struggles. We crowd-source real-world diet-related struggles, then work with nutrition experts to generate supportive text using ChatGPT. Finally, experts evaluate the safety and text quality of ChatGPT{'}s output. The result is the HAI-coaching dataset, containing {\textasciitilde}2.4K crowdsourced dietary struggles and {\textasciitilde}97K corresponding ChatGPT-generated and expert-annotated supportive texts. We analyse ChatGPT{'}s performance, discovering potentially harmful behaviours, especially for sensitive topics like mental health. Finally, we use HAI-coaching to test open LLMs on various downstream tasks, showing that even the latest models struggle to achieve good performance. HAI-coaching is available at https://github.com/uccollab/hai-coaching/",
+}
+```
+
 ## Dataset file structure
 The HAI-coaching dataset is in the  ``dataset.xlsx `` file and has the following structure:
 * TAB "DATASET": the actual dataset, containing the following columns:
@@ -31,3 +63,10 @@ The file ``dataset_parsing.ipynb`` contains (as a Jupyter notebook) some basic c
 
 ## Other files
 We also release all the relevant documents and material used in our experiments for struggles collection, clustering, prompt engineering, prompting ChatGPT and safety annotation. Each step has its own directory and README file.
+
+The code to reproduce our NLP baselines can be found in the "evaluation" folder.
+
+## Acknowledgements
+This work has been funded by the EC in the H2020 Marie Skłodowska-Curie PhilHumans project (contract no. 812882) and the European Research Council (Grant agreement No. 101039303 NG-NLG).
+
+<img src="img/LOGO_ERC-FLAG_FP.png" alt="erc-logo" height="150"/> 
